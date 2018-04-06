@@ -1,0 +1,26 @@
+{{ component( "CeresVanilla::Containers.Components.ContainerItemList" ) }}
+
+{% set listType = config("Ceres.item.lists.2.list_type") %}
+{% set tagIds = config("Ceres.item.lists.2.tag_ids") | split(",") %}
+{% set itemListId = 2 %}
+{% set isHome = services.template.isHome() %}
+
+{% if listType == "last_seen" %}
+  {% set itemList = services.itemLoader.loadForTemplate('CeresVanilla::ItemList.ItemListView', itemLoaderPresets.lastSeenItemsList, {'items': itemsPerPage}).documents %}
+{% elseif listType == "cross_selling" %}
+  {% set itemList = item.CrossSellingItems.documents %}
+{% elseif listType == "tag_list" %}
+  {% set itemList = services.itemLoader.loadForTemplate('CeresVanilla::ItemList.ItemListView', itemLoaderPresets.tagList, {'tagIds': tagIds}).documents %}
+{% endif %}
+
+{% if itemList is not empty %}
+    {% if not isHome %}
+        <hr>
+    {% endif %}
+
+    {% include 'CeresVanilla::Containers.Partials.ItemLists.ItemListHeader.twig' with { itemListId: 2, listType: listType, isHome: isHome } %}
+
+    <div class="cross_list_2 cross-box outer-row{% if isHome %} home{% endif %}">
+        <container-item-list :items="{{ itemList | json_encode }}"></container-item-list>
+    </div>
+{% endif %}

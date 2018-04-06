@@ -1,0 +1,227 @@
+/*
+██       █████  ███████ ██    ██ ██       ██████   █████  ██████  ███████ ██████
+██      ██   ██    ███   ██  ██  ██      ██    ██ ██   ██ ██   ██ ██      ██   ██
+██      ███████   ███     ████   ██      ██    ██ ███████ ██   ██ █████   ██   ██
+██      ██   ██  ███       ██    ██      ██    ██ ██   ██ ██   ██ ██      ██   ██
+███████ ██   ██ ███████    ██    ███████  ██████  ██   ██ ██████  ███████ ██████
+*/
+
+.home-slider {
+  .slick-dots {
+    margin-bottom: 0;
+
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    left: 0;
+
+    pointer-events: none;
+  }
+}
+
+.home-slider,
+.logo-slider {
+  button {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    background-color: $black;
+  }
+
+  .slick-arrow {
+    display: none !important;
+
+    @media ($xlarge) {
+      display: flex !important;
+
+      padding: 0;
+
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      bottom: 0;
+
+      border: 0;
+      background-color: transparent;
+
+      appearance: none;
+    }
+
+    &:active,
+    &:hover {
+      span {
+        &::before {
+          border-color: $brand-color;
+        }
+      }
+    }
+
+    span {
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      &::before {
+        @extend %arrow;
+
+        width: 60px;
+        height: 60px;
+
+        border-width: 2px;
+        border-color: $black;
+
+        filter: drop-shadow(0 0 10px rgba($white, .5));
+      }
+    }
+  }
+
+  .next {
+    right: 40px;
+
+    @media ($xxlarge) {
+      right: -80px;
+    }
+
+    span {
+      &::before {
+        @extend %arrowRight;
+      }
+    }
+  }
+
+  .prev {
+    left: 40px;
+
+    @media ($xxlarge) {
+      left: -80px;
+    }
+
+    span {
+      &::before {
+        @extend %arrowLeft;
+      }
+    }
+  }
+
+  &.full {
+    @media ($xxlarge) {
+      .next {
+        right: 40px;
+      }
+
+      .prev {
+        left: 40px;
+      }
+    }
+  }
+}
+
+.logo-slider {
+  width: 100%;
+  margin-bottom: 0;
+
+  a {
+    display: flex;
+
+    margin: 0 15px;
+
+    transition: opacity 300ms ease-in-out;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      transition: opacity 150ms ease-in-out;
+
+      opacity: .5;
+    }
+  }
+
+  img {
+    opacity: 0;
+  }
+
+  .slick-arrow {
+    bottom: 24px;
+
+    span {
+      &::before {
+        @extend %arrow;
+
+        width: 25px;
+        height: 25px;
+
+        border-width: 1px;
+        border-color: $black;
+      }
+    }
+  }
+
+  .prev {
+    left: -.2rem;
+
+    @media ($xxlarge) {
+      left: -40px;
+    }
+  }
+
+  .next {
+    right: -.2rem;
+
+    @media ($xxlarge) {
+      right: -40px;
+    }
+  }
+}
+
+/*
+ ██████ ██████   ██████  ███████ ███████       ██████   ██████  ██   ██
+██      ██   ██ ██    ██ ██      ██            ██   ██ ██    ██  ██ ██
+██      ██████  ██    ██ ███████ ███████ █████ ██████  ██    ██   ███
+██      ██   ██ ██    ██      ██      ██       ██   ██ ██    ██  ██ ██
+ ██████ ██   ██  ██████  ███████ ███████       ██████   ██████  ██   ██
+*/
+
+.home-module {
+  .cross-box {
+    margin-bottom: 60px;
+  }
+}
+
+/*
+███████ ███████  ██████
+██      ██      ██    ██
+███████ █████   ██    ██
+     ██ ██      ██    ██
+███████ ███████  ██████
+*/
+
+.seo-container {
+  text-align: center;
+
+  .content {
+    padding: 0 15px;
+
+    @media ($xlarge) {
+      padding: 0 10%;
+    }
+
+    @media ($xxlarge) {
+      padding: 0 15%;
+    }
+  }
+
+  h2 {
+    margin-top: 30px;
+
+    @media ($xlarge) {
+      margin-top: 50px;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{{ component( "CeresVanilla::ItemList.Components.ItemLazyImg" ) }}
+
+<script type="x/template" id="vue-category-image-carousel">
+    <span>
+        <span v-for="(imageUrl, index) in imageUrls" v-if="index === 0">
+            <item-lazy-img ref="itemLazyImage" template="#vue-item-lazy-img" :image-url="imageUrl.url" :alt="getAltText(imageUrl)"></item-lazy-img>
+        </span>
+    </span>
+</script>

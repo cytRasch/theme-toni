@@ -1,0 +1,421 @@
+@import '#config';
+
+.mm-search,
+.mm-navbar {
+  border-bottom-color: $border-color-mmenu;
+}
+
+.mm-listview .mm-divider {
+  padding-left: 20px;
+}
+
+.mm-listview > li > a,
+.mm-listview > li > span {
+  font-size: 1rem;
+  font-weight: 300;
+
+  padding: 20px 10px 20px 40px;
+
+  &.show-parent-link {
+    font-weight: bold;
+
+    color: $brand-color;
+  }
+}
+
+.mm-arrow::after,
+.mm-next::after {
+  right: 28px;
+}
+
+.mm-listview .mm-next + a,
+.mm-listview .mm-next + span {
+  margin-right: 60px;
+}
+
+.mm-listview .mm-next {
+  width: 100%;
+}
+
+.mm-panels > .mm-panel > .mm-listview {
+  margin-left: -40px;
+}
+
+// scss-lint:disable ImportantRule
+
+.mm-search input {
+  height: 40px;
+  margin-top: 10px;
+  padding-left: 30px;
+
+  border-radius: 5px;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTExIDc5LjE1ODMyNSwgMjAxNS8wOS8xMC0wMToxMDoyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDFDQTEyNjgwRTFGMTFFNkFGQ0NCNkY5MjhGRUVGNjMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDFDQTEyNjkwRTFGMTFFNkFGQ0NCNkY5MjhGRUVGNjMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEMUNBMTI2NjBFMUYxMUU2QUZDQ0I2RjkyOEZFRUY2MyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpEMUNBMTI2NzBFMUYxMUU2QUZDQ0I2RjkyOEZFRUY2MyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PiKi4ukAAANVSURBVHja7JnJaxRBFIdroiLEJRGduMRtYnRwQ+NCguBFT4LgQY0GRBAi4kE0wYn5A/SiZEEEb4IejHpRIogm6EUQjSIyRFDHuCQRUQQ3XNA44yt8h+bxuruqu3qZ4IPv0D3zXtWvurr61auE8GdLgVqgBlgEpIAkkAA+Aa+AHJAF7gF9IkY2E2gFHgIFTZ4DJ4AlUQqYBnQCPzwI4LiATzRU2wt8NCSActREBxMuv5cAXUC9w3+Ggbv4HrxGwXlgMjAbR70OSDvEkO/ONmAoiKcwFTtnN5JngY3AGMV4a4A24LNNPHl/rWkRU4BBmwbP4wrlZ4COOwyQUTFPmAa+4eM3ZbLDT5l2fuGU9G2XmeAvgKoApu84oIdpb8Bv4N1MUDnFygNeFTkxp70GKwVGSLDfQGVIS/wzRswKL4FOMoE2h/itmsO0/0A3SBkT5EoE2UML049anQBHmADJiFKhd6Qf3TrOOeLcFWFOd4AZ1DIVx2rGsS5CIROBP6Q/9SqOjcTpfQy2Cj26S7FMCleRe7diIKSXXK9UEbKQ3HsUAyFZcp1SSU4HyGNsiIGQZcyHucLN6Qtx2hQDIfOZBajKbWrRR1aIgZCC7iawBHd0VpsUAyGl5DqPtQJHIS/JvcoYCJlOrmVp6YObkBy5tzwGQmi5aBA3XI52kNlERW2XSJ/OqTjVMCtEOkIRcpZ8Jf1p9JpxdkQoZDszsLNUnduJ40/cT0dhj0lf7ug4z2NGoT0CEVuZfmzRDdLNBFkcooixTJbhqfI416aCEpZdM1kzOMYEuxmCiM4g2u1ngl4X7gVvr9bBtNePO0VfViH4M5CsMHtAU46VGq7+22aqkdXCvsjcKtQr8Ha2i/l2WcljxmHEZAHiu01DMtFs1kwwZSVElmT7hPoh0CHV4G7zvhofv90R2Qju8W/j1HtjWUInADPQdx2wQfw7ruBM5nc3gP3Mb024GBixUyKYYzfJVUvdKmPznyaTq8t6XBJNCZAr006mnVDESJPHbRcd3h83ehUKHBm/74zuLm4HTjv5jgxjsmk9eZLFvvvAGUzFF2jEbwlTjNXkkpzECkgKX/TxPmNGJiYIy4wmMYf/iykyMXuKUUyzjRgxGsQMiSK2fcBbzPHSfwUYADTX/RqKw5VAAAAAAElFTkSuQmCC') !important;
+  background-repeat: no-repeat !important;
+  background-position: 10px center !important;
+  background-size: 15px 15px !important;
+}
+
+.mm-navbar .mm-title {
+  font-weight: bold;
+
+  color: $brand-color !important;
+}
+// scss-lint:enable ImportantRule
+
+.mm-listview > li .mm-arrow::after,
+.mm-listview > li .mm-next::after {
+  border-color: $brand-color;
+}
+
+.mm-menu {
+  .mm-navbar-bottom {
+    background-color: $background-color-mmenu;
+  }
+
+  .mm-listview > li .mm-next::after {
+    border-color: $brand-color;
+  }
+
+  .show-all {
+    a {
+      color: $brand-color;
+    }
+  }
+
+  .mm-btn.mm-clear {
+    margin-top: 16px;
+
+    &::after {
+      left: 12px;
+    }
+  }
+}
+
+.mm-menu .mm-btn::after,
+.mm-menu .mm-btn::before {
+  border-color: $brand-color;
+}
+
+.mm-navbar-content-2 a {
+  padding: 0;
+
+  position: relative;
+  bottom: -4px;
+}
+
+.mm-listview > .my-account {
+  background-color: $background-color-mmenu;
+
+   > a {
+    font-size: .9rem;
+    font-weight: 500;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    color: $grey;
+  }
+}
+
+.mm-slideout {
+  z-index: inherit;
+}
+
+
+// dark and black theme available
+
+//scss-lint:disable ImportantRule
+
+// .mm-search,
+// .mm-navbar {
+//   border-bottom-color: $border-color-mmenu;
+// }
+//
+// .mm-search {
+//   height: auto;
+// }
+//
+// .mm-listview .mm-divider {
+//   padding-left: 20px;
+// }
+//
+// .mm-listview > li > a,
+// .mm-listview > li > span {
+//   font-size: 1rem;
+//
+//   padding: 10px 10px 10px 40px;
+// }
+//
+// .mm-arrow::after,
+// .mm-next::after {
+//   right: 28px;
+// }
+//
+// .mm-listview .mm-next + a,
+// .mm-listview .mm-next + span {
+//   margin-right: 60px;
+// }
+//
+// .mm-listview .mm-next {
+//   width: 100%;
+// }
+//
+// .mm-panels > .mm-panel > .mm-listview {
+//   margin-bottom: 60px;
+//   margin-left: -40px;
+// }
+//
+// .mm-navbar .mm-title {
+//   font-weight: bold;
+//
+//   color: $brand-color !important;
+// }
+//
+// .mm-listview > li .mm-arrow::after,
+// .mm-listview > li .mm-next::after {
+//   border-color: $brand-color !important;
+// }
+//
+// .mm-menu {
+//   .mm-navbar-bottom {
+//     background-color: $background-color-mmenu;
+//   }
+//
+//   .mm-listview > li .mm-next::after {
+//     border-color: $brand-color !important;
+//   }
+//
+//   .show-all {
+//     a {
+//       color: $brand-color !important;
+//     }
+//   }
+//
+//   .mm-btn.mm-clear {
+//     margin-top: 16px;
+//
+//     &::after {
+//       left: 12px;
+//     }
+//   }
+// }
+//
+// .mm-menu .mm-btn::after,
+// .mm-menu .mm-btn::before {
+//   border-color: $brand-color !important;
+// }
+//
+// .mm-navbar-content-2 a {
+//   padding: 0;
+//
+//   position: relative;
+//   bottom: -4px;
+// }
+//
+// .mm-listview > .my-account {
+//   margin-bottom: 60px;
+//
+//   background-color: $black;
+//
+//    > a {
+//     font-size: .9rem;
+//
+//     padding-top: 10px;
+//     padding-bottom: 10px;
+//
+//     color: $grey;
+//   }
+// }
+//
+// .mm-slideout {
+//   z-index: inherit;
+// }
+//
+// .mm-listview .fast {
+//   text-transform: uppercase;
+//
+//   color: $brand-color;
+//   border-top: 1px solid $black;
+//   border-bottom: 1px solid $black;
+//   background: $darkgrey !important;
+// }
+
+/*
+████████ ██   ██ ███████ ███    ███ ███████ ███████
+   ██    ██   ██ ██      ████  ████ ██      ██
+   ██    ███████ █████   ██ ████ ██ █████   ███████
+   ██    ██   ██ ██      ██  ██  ██ ██           ██
+   ██    ██   ██ ███████ ██      ██ ███████ ███████
+*/
+
+// .mm-menu.mm-theme-dark {
+//   color: rgba(255,255,255,.8);
+//   border-color: rgba(0,0,0,.15);
+//   background: #333;
+// }
+//
+// .mm-menu.mm-theme-dark .mm-navbar > *,
+// .mm-menu.mm-theme-dark .mm-navbar a,
+// .mm-menu.mm-theme-dark em.mm-counter {
+//   color: rgba(255,255,255,.4);
+// }
+//
+// .mm-menu.mm-theme-dark .mm-btn:after,
+// .mm-menu.mm-theme-dark .mm-btn:before {
+//   border-color: rgba(255,255,255,.4);
+// }
+//
+// .mm-menu.mm-theme-dark .mm-listview {
+//   border-color: rgba(0,0,0,.15);
+// }
+//
+// .mm-menu.mm-theme-dark .mm-listview > li .mm-arrow:after,
+// .mm-menu.mm-theme-dark .mm-listview > li .mm-next:after {
+//   border-color: rgba(255,255,255,.4);
+// }
+//
+// .mm-menu.mm-theme-dark .mm-listview > li a:not(.mm-next) {
+//   -webkit-tap-highlight-color: rgba(0,0,0,.1);
+//           tap-highlight-color: rgba(0,0,0,.1);
+// }
+//
+// .mm-menu.mm-theme-dark .mm-listview > li.mm-selected > a:not(.mm-next),
+// .mm-menu.mm-theme-dark .mm-listview > li.mm-selected > span {
+//   background: rgba(0,0,0,.1);
+// }
+//
+// .mm-menu.mm-theme-dark .mm-divider,
+// .mm-menu.mm-theme-dark .mm-fixeddivider span,
+// .mm-menu.mm-theme-dark .mm-listview > li.mm-opened.mm-vertical > .mm-panel,
+// .mm-menu.mm-theme-dark .mm-listview > li.mm-opened.mm-vertical > a.mm-next,
+// .mm-menu.mm-theme-dark.mm-vertical .mm-listview > li.mm-opened > .mm-panel,
+// .mm-menu.mm-theme-dark.mm-vertical .mm-listview > li.mm-opened > a.mm-next {
+//   background: rgba(255,255,255,.05);
+// }
+//
+// .mm-menu.mm-theme-dark label.mm-check:before {
+//   border-color: rgba(255,255,255,.8);
+// }
+//
+// .mm-menu.mm-pageshadow.mm-theme-dark:after {
+//   box-shadow: 0 0 20px rgba(0,0,0,.5);
+// }
+//
+// .mm-menu.mm-theme-dark .mm-search input {
+//   color: rgba(0, 0, 0, .8);
+//   background: rgba(0, 0, 0, .3);
+//
+//   &::placeholder {
+//     color: rgba(0, 0, 0, .8);
+//   }
+// }
+//
+// .mm-menu.mm-theme-dark .mm-indexer a,
+// .mm-menu.mm-theme-dark .mm-noresultsmsg {
+//   color: rgba(255,255,255,.4);
+// }
+//
+// .mm-menu.mm-hoverselected.mm-theme-dark .mm-listview > li > a.mm-fullsubopen:hover + span,
+// .mm-menu.mm-hoverselected.mm-theme-dark .mm-listview > li > a:not(.mm-fullsubopen):hover,
+// .mm-menu.mm-parentselected.mm-theme-dark .mm-listview > li > a.mm-selected.mm-fullsubopen + a,
+// .mm-menu.mm-parentselected.mm-theme-dark .mm-listview > li > a.mm-selected.mm-fullsubopen + span,
+// .mm-menu.mm-parentselected.mm-theme-dark .mm-listview > li > a.mm-selected:not(.mm-fullsubopen) {
+//   background: rgba(0,0,0,.1);
+// }
+//
+// .mm-menu.mm-theme-dark label.mm-toggle {
+//   background: rgba(0,0,0,.15);
+// }
+//
+// .mm-menu.mm-theme-dark label.mm-toggle:before {
+//   background: #333;
+// }
+//
+// .mm-menu.mm-theme-dark input.mm-toggle:checked ~ label.mm-toggle {
+//   background: #4bd963;
+// }
+
+// .mm-menu.mm-theme-black {
+//   color: rgba(255,255,255,.6);
+//   border-color: rgba(255,255,255,.2);
+//   background: #000;
+// }
+//
+// .mm-menu.mm-theme-black .mm-navbar > *,
+// .mm-menu.mm-theme-black .mm-navbar a,
+// .mm-menu.mm-theme-black em.mm-counter {
+//   color: rgba(255,255,255,.4);
+// }
+//
+// .mm-menu.mm-theme-black .mm-btn:after,
+// .mm-menu.mm-theme-black .mm-btn:before {
+//   border-color: rgba(255,255,255,.4);
+// }
+//
+// .mm-menu.mm-theme-black .mm-listview {
+//   border-color: rgba(255,255,255,.2);
+// }
+//
+// .mm-menu.mm-theme-black .mm-listview > li .mm-arrow:after,
+// .mm-menu.mm-theme-black .mm-listview > li .mm-next:after {
+//   border-color: rgba(255,255,255,.4);
+// }
+//
+// .mm-menu.mm-theme-black .mm-listview > li a:not(.mm-next) {
+//   -webkit-tap-highlight-color: rgba(255,255,255,.3);
+//           tap-highlight-color: rgba(255,255,255,.3);
+// }
+//
+// .mm-menu.mm-theme-black .mm-listview > li.mm-selected > a:not(.mm-next),
+// .mm-menu.mm-theme-black .mm-listview > li.mm-selected > span {
+//   background: rgba(255,255,255,.3);
+// }
+//
+// .mm-menu.mm-theme-black .mm-divider,
+// .mm-menu.mm-theme-black .mm-fixeddivider span,
+// .mm-menu.mm-theme-black .mm-listview > li.mm-opened.mm-vertical > .mm-panel,
+// .mm-menu.mm-theme-black .mm-listview > li.mm-opened.mm-vertical > a.mm-next,
+// .mm-menu.mm-theme-black.mm-vertical .mm-listview > li.mm-opened > .mm-panel,
+// .mm-menu.mm-theme-black.mm-vertical .mm-listview > li.mm-opened > a.mm-next {
+//   background: rgba(255,255,255,.2);
+// }
+//
+// .mm-menu.mm-theme-black label.mm-check:before {
+//   border-color: rgba(255,255,255,.6);
+// }
+//
+// .mm-menu.mm-pageshadow.mm-theme-black:after {
+//   display: none;
+//
+//   content: none;
+// }
+//
+// .mm-menu.mm-theme-black .mm-search input {
+//   color: rgba(255,255,255,.6);
+//   background: rgba(255,255,255,.3);
+// }
+//
+// .mm-menu.mm-theme-black .mm-indexer a,
+// .mm-menu.mm-theme-black .mm-noresultsmsg {
+//   color: rgba(255,255,255,.4);
+// }
+//
+// .mm-menu.mm-hoverselected.mm-theme-black .mm-listview > li > a.mm-fullsubopen:hover + span,
+// .mm-menu.mm-hoverselected.mm-theme-black .mm-listview > li > a:not(.mm-fullsubopen):hover,
+// .mm-menu.mm-parentselected.mm-theme-black .mm-listview > li > a.mm-selected.mm-fullsubopen + a,
+// .mm-menu.mm-parentselected.mm-theme-black .mm-listview > li > a.mm-selected.mm-fullsubopen + span,
+// .mm-menu.mm-parentselected.mm-theme-black .mm-listview > li > a.mm-selected:not(.mm-fullsubopen) {
+//   background: rgba(255,255,255,.3);
+// }
+//
+// .mm-menu.mm-theme-black label.mm-toggle {
+//   background: rgba(255,255,255,.2);
+// }
+//
+// .mm-menu.mm-theme-black label.mm-toggle:before {
+//   background: #000;
+// }
+//
+// .mm-menu.mm-theme-black input.mm-toggle:checked ~ label.mm-toggle {
+//   background: #4bd963;
+// }

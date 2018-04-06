@@ -1,0 +1,290 @@
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+
+{% set WebFontsActive = config( 'CeresVanilla.WebFontsActive' ) %}
+{% set activateModules = config('CeresVanilla.activateModules') %}
+
+{% set quickCSSHome = config('CeresVanilla.quickCSSHome') %}
+
+{% set homeSliderCount = config('CeresVanilla.homeSliderCount')|number_format %}
+{% set homeSliderFullscreen = config('CeresVanilla.homeSliderFullscreen') %}
+{% set homeSliderImageURLs = config('CeresVanilla.homeSliderImageURLs')|split(';') %}
+{% set homeSliderLinks = config('CeresVanilla.homeSliderLinks')|split(';') %}
+{% set homeSliderLinksActive = false %}
+{% if homeSliderLinks[0] is not empty %}{% set homeSliderLinksActive = true %}{% endif %}
+{% set homeSliderTitles = config('CeresVanilla.homeSliderTitles') | split(';') %}
+{% set homeSliderTitlesCount = homeSliderTitles | length %}
+{% set homeSliderButtons = config('CeresVanilla.homeSliderButtons') | split(';') %}
+{% set homeSliderButtonsCount = homeSliderButtons | length %}
+
+{% set homeLogoSliderCount = config('CeresVanilla.homeLogoSliderCount')|number_format %}
+{% set homeLogoSliderLinks = config('CeresVanilla.homeLogoSliderLinks') | split(';') %}
+{% set homeLogoSliderImageURLs = config('CeresVanilla.homeLogoSliderImageURLs') | split(';') %}
+{% set homeLogoSliderTitel = config('CeresVanilla.homeLogoSliderTitel') %}
+{% set homeLogoSliderImageMaxHeight = config('CeresVanilla.homeLogoSliderImageMaxHeight') %}
+{% set homeLogoSliderCountSM = config('CeresVanilla.homeLogoSliderCountSM')|number_format %}
+{% set homeLogoSliderCountMD = config('CeresVanilla.homeLogoSliderCountMD')|number_format %}
+{% set homeLogoSliderCountLG = config('CeresVanilla.homeLogoSliderCountLG')|number_format %}
+{% set homeLogoSliderCountXL = config('CeresVanilla.homeLogoSliderCountXL')|number_format %}
+
+{% set homeShortcutsFullscreen = config('CeresVanilla.homeShortcutsFullscreen') %}
+{% set homeShortcutsCount = config('CeresVanilla.homeShortcutsCount')|number_format %}
+{% set homeShortcutsGrid = config('CeresVanilla.homeShortcutsGrid') | split(',') %}
+{% set homeShortcutsImageURL = config('CeresVanilla.homeShortcutsImageURL') | split(';') %}
+{% set homeShortcutsLinks = config('CeresVanilla.homeShortcutsLinks')|split(';') %}
+{% set homeShortcutsLinksActive = false %}
+{% if homeShortcutsLinks[0] is not empty %}{% set homeShortcutsLinksActive = true %}{% endif %}
+{% set homeShortcutsButtonHTML = config('CeresVanilla.homeShortcutsButtonHTML')|split(';') %}
+{% set homeShortcutsTitle = config('CeresVanilla.homeShortcutsTitle') %}
+
+{% set homeProductGroupFullscreen = config('CeresVanilla.homeProductGroupFullscreen') %}
+{% set homeProductGroupCount = config('CeresVanilla.homeProductGroupCount')|number_format %}
+{% set homeProductGroupImageURL = config('CeresVanilla.homeProductGroupImageURL') | split(';') %}
+{% set homeProductGroupLinks = config('CeresVanilla.homeProductGroupLinks')|split(';') %}
+{% set homeProductGroupLinksActive = false %}
+{% if homeProductGroupLinks[0] is not empty %}{% set homeProductGroupLinksActive = true %}{% endif %}
+{% set homeProductGroupButtonHTML = config('CeresVanilla.homeProductGroupButtonHTML')|split(';') %}
+{% set homeProductGroupTitle = config('CeresVanilla.homeProductGroupTitle') %}
+
+
+
+
+
+
+
+
+{% extends getPartial('page-design') %}
+
+{% block PartialHead %}
+    <meta name="description" content="{{ config("Ceres.meta."~metaLang~".description_home") }}">
+    <meta name="robots" content="{{ config("Ceres.meta.robots_home") }}">
+
+    <meta property="og:title" content="Firma"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="{{ services.webstoreConfig.getWebstoreConfig().domainSsl }}"/>
+    <meta property="og:image"
+          content="{% if ('http' in companyLogo) or ('layout/' in companyLogo) %}{{ companyLogo }}{% else %}{{ plugin_path('Ceres') }}/{{ companyLogo }}{% endif %}"/>
+
+    <script type="application/ld+json">
+        {"@context": "http://schema.org","@type": "WebSite","url": "{{ services.webstoreConfig.getWebstoreConfig().domainSsl }}","potentialAction":{"@type": "SearchAction","target": "{{ services.webstoreConfig.getWebstoreConfig().domainSsl }}/search?query={search_term}","query-input": "required name=search_term"}}
+    </script>
+
+    <title>{{ config("Ceres.header.company_name") }}</title>
+
+    {% if quickCSSHome is not empty %}
+    <style>{{ quickCSSHome|replace({"\n": "", "\r\n": "", "\t": "", "\n\r": ""}) }}</style>
+    {% endif %}
+
+{% endblock %}
+
+{% block PageBody %}
+  <!-- Insert markup for homepage here -->
+  {% if activateModules is not empty %}
+    <div class="home-modules">
+
+
+        <div class="home-module mega-slider">
+            {% set sliderData = mega_slider() %}
+            {{ component( "CeresVanilla::Homepage.Components.MegaSlider" ) }}
+            <mega-slider template="#vue-mega-slider" :slider-data="{{ sliderData | json_encode }}"></mega-slider>
+        </div>
+
+
+        {# homeslider #}
+        {% if "homeSlider" in activateModules %}
+        <div class="home-module home-slider-container" style="order: {{ config('CeresVanilla.position_bannerslider') }}">
+
+          {% if homeSliderCount|number_format > 0 %}
+
+            {% if homeSliderFullscreen == "false" %}<div class="fx-container"><div class="fx-row"><div class="fx-col-xs-12">{% endif %}
+
+              <ul class="slick home-slider{% if homeSliderFullscreen == "true" %} full{% endif %}" data-slick='{"touchThreshold": 100, "prevArrow": "<button class=prev><span></span></button>", "nextArrow": "<button class=next><span></span></button>", "dots": true}'>
+                {% for i in 0..homeSliderCount - 1 %}
+                  <li class="item{% if not loop.first %} hide{% endif %} .itm-{{ i + 1 }}">
+                    {% if homeSliderLinksActive %}<a href="{{ homeSliderLinks[i] }}" style="background-image:url({{ plugin_path('CeresVanilla') }}/documents/ajax-loader.svg)" class="lazyload">{% endif %}
+
+                      <img data-optimumx="1.5" data-sizes="auto" src="" class="lazyload img-fluid" data-srcset="{{ homeSliderImageURLs[i]|replace({"\n": "", "\r\n": "", "\t": "", "\n\r": "", "/":"/images/gallery/home-banner-slider/"})|trim }}" alt="">
+
+                      {% if homeSliderTitlesCount > 1 %}
+                      <span class="title">
+                        <span>{{ homeSliderTitles[i]|replace({"\n": "", "\r\n": "", "\t": "", "\n\r": ""})|trim }}</span>
+                        {% if homeSliderButtonsCount > 1 %}<span class="button">{{ homeSliderButtons[i]|replace({"\n": "", "\r\n": "", "\t": "", "\n\r": ""})|trim }}</span>{% endif %}
+                      </span>
+                    {% endif %}
+
+                    {% if homeSliderLinksActive %}</a>{% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+
+            {% if homeSliderFullscreen == "false" %}</div></div></div> {% endif %}
+
+          {% endif %}
+
+        </div>
+        {% endif %}
+        {# homeslider end #}
+
+
+
+
+
+
+
+
+
+      {% if "shortCuts" in activateModules and homeShortcutsCount > 0  %}
+      <div class="home-module shortcuts{% if homeShortcutsCount >= 5  %} mrg-lg{% endif %}" style="order: {{ config('CeresVanilla.position_shortcuts') }}">
+        <div class="fx-container{% if homeShortcutsFullscreen == "true" %} full{% endif %}">
+
+          {% if homeShortcutsTitle|trim is not empty %}<div class="module-header">{{ homeShortcutsTitle }}</div>{% endif %}
+
+          <div class="fx-row">
+            {% for i in 0..homeShortcutsCount - 1 %}
+            {% set homeShortcutsImageURLFirstImage = homeShortcutsImageURL[i] | split(',') %}
+            {% set homeShortcutsImageURLFirstImage = homeShortcutsImageURLFirstImage[0] | split(' ') %}
+
+            <div class="fx-col-xs-{{ homeShortcutsGrid[0] | trim }} fx-col-sm-{{ homeShortcutsGrid[1] | trim }} fx-col-md-{{ homeShortcutsGrid[2] | trim }} fx-col-lg-{{ homeShortcutsGrid[3] | trim }}">
+              <div class="item">
+                {% if homeShortcutsLinksActive %}<a href="{{ homeShortcutsLinks[i]|replace({"\n": "", "\r\n": "", "\t": "", "\n\r": ""})|trim }}">{% endif %}
+
+                  <img data-optimumx="1.5" data-sizes="auto" src="{{ homeShortcutsImageURLFirstImage[0]|replace({"/":"/images/gallery/home-shortcuts/"}) | trim }}" class="lazyload img-fluid" data-srcset="{{ homeShortcutsImageURL[i]|replace({"\n": "", "\r\n": "", "\t": "", "\n\r": "", "/":"/images/gallery/home-shortcuts/"})|trim }}" alt="">
+
+                  {% if homeShortcutsButtonHTML[0] != "Hier Button HTML eintragen" %}
+                    {{ homeShortcutsButtonHTML[i]|replace({"\n": "", "\r\n": "", "\t": "", "\n\r": ""})|trim|raw }}
+                  {% endif %}
+
+                {% if homeShortcutsLinksActive %}</a>{% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+
+
+
+
+
+
+
+
+      {% if "productGroups" in activateModules and homeProductGroupCount > 0 %}
+        <div class="home-module prodduct-group" style="order: {{ config('CeresVanilla.position_productgroups') }}">
+          <div class="fx-container{% if homeProductGroupFullscreen == "true" %} full{% endif %}">
+            {% if homeProductGroupTitle|trim is not empty %}<div class="module-header">{{ homeProductGroupTitle }}</div>{% endif %}
+            <div class="product-group show-{{ homeProductGroupCount }}">
+
+              {% for i in 0..homeProductGroupCount - 1 %}
+              {% set homeProductGroupImageURLFirstImage = homeProductGroupImageURL[i] | split(',') %}
+              {% set homeProductGroupImageURLFirstImage = homeProductGroupImageURLFirstImage[0] | split(' ') %}
+              {% if homeProductGroupLinksActive %}<a class="item i{{ i + 1}}" href="{{ homeProductGroupLinks[i]|replace({"\n": "", "\r\n": "", "\t": "", "\n\r": ""})|trim }}">{% else %}<div class="item {{ i + 1}}">{% endif %}
+                <span data-optimumx="1.5" class="lazyload img inner" data-bgset="{{ homeProductGroupImageURL[i]|replace({"\n": "", "\r\n": "", "\t": "", "\n\r": "", "/":"/images/gallery/home-produkt-kachel/"})|trim }}" alt="">
+
+                  <img data-optimumx="1.5" data-sizes="auto" src="{{ homeProductGroupImageURLFirstImage[0]|replace({"/":"/images/gallery/home-produkt-kachel/"}) | trim }}" class="lazyload img-fluid" data-srcset="{{ homeProductGroupImageURL[i]|replace({"\n": "", "\r\n": "", "\t": "", "\n\r": "", "/":"/images/gallery/home-produkt-kachel/"})|trim }}" alt="">
+
+                  {% if homeProductGroupButtonHTML[0] != "Hier Button HTML eintragen" %}
+                  {{ homeProductGroupButtonHTML[i]|replace({"\n": "", "\r\n": "", "\t": "", "\n\r": ""})|trim|raw }}
+                  {% endif %}
+                </span>
+              {% if homeProductGroupLinksActive %}</a>{% else %}</div>{% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+
+
+
+
+
+
+
+
+
+      {# logoslider #}
+
+      {% if "logoSlider" in activateModules %}
+
+        <div class="home-module logo-slider-container" style="order: {{ config('CeresVanilla.position_logoslider') }}">
+          {% if homeLogoSliderCount > 0 %}
+
+            {% set countLogoLinks = homeLogoSliderLinks|length %}
+            {% if countLogoLinks > homeLogoSliderCount %}{% set countLogoLinks = homeLogoSliderCount %}{% endif %}
+
+            <div class="fx-container">
+              {% if homeLogoSliderTitel|trim is not empty %}<div class="module-header">{{ homeLogoSliderTitel }}</div>{% endif %}
+              <ul class="slick logo-slider" data-slick='{"touchThreshold": 100, "slidesToShow":{{ homeLogoSliderCountXL }}, "slidesToScroll":{{ homeLogoSliderCountXL }}, "prevArrow": "<button class=&#39;prev small&#39;><span></span></button>", "nextArrow": "<button class=&#39;next small&#39;><span></span></button>", "dots": true, "responsive": [{"breakpoint": 1025,"settings": {"slidesToShow": {{ homeLogoSliderCountLG }},"slidesToScroll": {{ homeLogoSliderCountLG }}}},{"breakpoint": 700,"settings": {"slidesToShow": {{ homeLogoSliderCountMD }},"slidesToScroll": {{ homeLogoSliderCountMD }}}},{"breakpoint": 376,"settings": {"slidesToShow": {{ homeLogoSliderCountSM }},"slidesToScroll": {{ homeLogoSliderCountSM }}}}]}'>
+                {% for i in 0..countLogoLinks - 1 %}
+                <li class="hide"><a data-optimumx="1.5" data-bgset="{{ homeLogoSliderImageURLs[i]|replace({"\n": "", "\r\n": "", "\t": "", "\n\r": "", "/":"/images/gallery/home-logo-slider/"})|trim }}" class="lazyload" href="{{ homeLogoSliderLinks[i]|trim }}" style="height: {{ homeLogoSliderImageMaxHeight }}px"></a></li>
+                {% endfor %}
+              </ul>
+            </div>
+
+          {% endif %}
+        </div>
+
+      {% endif %}
+
+      {# logoslider end #}
+
+
+
+
+
+
+
+
+      {% if "crossSeller" in activateModules %}
+
+          <div class="home-module cross-seller-container" style="order:{{ config('CeresVanilla.position_crossseller') }}">
+            {% set category3 = services.category.get(config("Ceres.homepage.homepageCategory3"), lang) %}
+            {% set category6 = services.category.get(config("Ceres.homepage.homepageCategory6"), lang) %}
+
+            {% set paginatedCategoryList1 = services.itemLoader.loadForTemplate('CeresVanilla::ItemList.ItemListView',itemLoaderPresets.categoryList,{'categoryId': category3.id, 'page':1, 'items':8, 'sorting': itemSort}) %}
+
+            {% set paginatedCategoryList2 =services.itemLoader.loadForTemplate('CeresVanilla::ItemList.ItemListView',itemLoaderPresets.categoryList,{'categoryId': category6.id, 'page':1, 'items':8, 'sorting': itemSort}) %}
+
+            {% set categoryList1 = paginatedCategoryList1.documents %}
+            {% set categoryList2 = paginatedCategoryList2.documents %}
+
+            {{ component( "CeresVanilla::ItemList.Components.ItemList") }}
+            {{ component( "CeresVanilla::ItemList.Components.CategoryImageCarousel") }}
+            {{ component( "CeresVanilla::Basket.Components.AddToBasket" ) }}
+
+            {% set homepageContainer6 = LayoutContainer.show("Ceres::Homepage.Container6") %}
+            {% if categoryList1 is not empty or homepageContainer6 | trim is not empty %}
+            <div class="fx-container">{{ homepageContainer6 }}</div>
+            {% endif %}
+
+            {% set homepageContainer9 = LayoutContainer.show("Ceres::Homepage.Container9") %}
+            {% if categoryList2 is not empty or homepageContainer9 | trim is not empty %}
+            <div class="fx-container">{{ homepageContainer9 }}</div>
+            {% endif %}
+          </div>
+
+      {% endif %}
+
+  </div>
+  {% endif %}
+
+  {% if activateModules is empty %}
+  <div class="fx-container" style="margin: 30px auto">
+    <div class="no-content-home">Bitte Startseite mit Content befüllen unter Plugins &#10145; Plugin Übersicht &#10145; CeresVanilla &#10145; Konfiguration &#10145; Home Module aktivieren</div>
+  </div>
+  {% endif %}
+
+
+
+  {% set SeoText = config('CeresVanilla.homeSeoTextContent') %}
+  {% if "seoText" in activateModules %}
+  <div class="home-module seo-container" style="order: {{ config('CeresVanilla.position_seotext') }}">
+    <div class="fx-container">
+      <article><div class="content">{{ SeoText|replace({"\n": "", "\r\n": "", "\t": "", "\n\r": ""})|raw }}</div></article>
+    </div>
+  </div>
+  {% endif %}
+
+{% endblock %}

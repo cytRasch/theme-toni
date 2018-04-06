@@ -1,0 +1,63 @@
+{% macro get_children(category, currentScopeUrl, level) %}
+    {% set megaMenuLevelsDesktop = not config('CeresVanilla.navigationDesktopLevels') ? 1 : config('CeresVanilla.navigationDesktopLevels') %}
+    {% import _self as childlist %}
+    {% set counter = 1 %}
+    {% if level < megaMenuLevelsDesktop %}
+        {% for child in category.children %}
+            {% if (child.details | length > 0) %}
+                <li class="level{{ level + 1 }}">
+                    {% set newScope = currentScopeUrl ~ "/" ~ child.details[0].nameUrl %}
+                    <a href="{{ newScope }}" v-render-category="{ id: {{ child.id }}, type: '{{ child.type }}' }">{{ child.details[0].name }}</a>
+                    {% if child.children %}
+                        {% if level == 1 %}<ul>{% endif %}
+                            {{ childlist.get_children(child, newScope, level + 1) }}
+                        {% if level == 1 %}</ul>{% endif %}
+                    {% endif %}
+                </li>
+                {% set counter = counter + 1 %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+{% macro get_nav_bar(categories, currentScopeUrl) %}
+    {% import _self as navbar %}
+    {% set counter = 1 %}
+    {% set megaMenuLevelsDesktop = not config('CeresVanilla.navigationDesktopLevels') ? 1 : config('CeresVanilla.navigationDesktopLevels') %}
+
+    {% for category in categories %}
+
+        {% if category.details | length > 0 %}
+
+                {% set currentScopeUrl = "/" ~ category.details[0].nameUrl %}
+
+                {% set translatedChildren = 0 %}
+                {% for children in category.children if children.details[0] %}
+                    {% set translatedChildren = translatedChildren + 1 %}
+                {% endfor %}
+
+                {% if category.children and translatedChildren > 0 %}
+
+                <li class="dropdown-box" v-hover-mega-menu>
+                    <a href="{{ currentScopeUrl }}" v-render-category="{ id: {{ category.id }}, type: '{{ category.type }}' }">{{ category.details[0].name }}</a>
+
+                    <ul class="dropdown-container">
+                        <li class="fx-container">
+                            <ul data-level="1">
+                                {{ navbar.get_children(category, currentScopeUrl, 1) }}
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+            {% else %}
+
+                <li>
+                    <a href="{{ currentScopeUrl }}" v-render-category="{ id: {{ category.id }}, type: '{{ category.type }}' }">{{ category.details[0].name }}</a>
+                </li>
+
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+{% endmacro %}

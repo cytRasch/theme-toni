@@ -1,0 +1,61 @@
+{% macro get_children(category, currentScopeUrl, level) %}
+    {% import _self as childlist %}
+    {% set counter = 1 %}
+
+    {% for child in category.children %}
+      {% if (child.details | length > 0) %}
+          {% if loop.first and counter == 1 %}
+          <li>
+              <a href="{{ currentScopeUrl }}" v-render-category="{ id: {{ category.id }}, type: '{{ category.type }}' }" class="show-parent-link">Alles anzeigen</a>
+          </li>
+          {% endif %}
+          <li class="level{{ level + 1 }}">
+              {% set newScope = currentScopeUrl ~ "/" ~ child.details[0].nameUrl %}
+              <a href="{{ newScope }}" v-render-category="{ id: {{ child.id }}, type: '{{ child.type }}' }">{{ child.details[0].name }}</a>
+              {% if child.children %}
+                  {% if level == 1 %}<ul>{% endif %}
+                      {{ childlist.get_children(child, newScope, level + 1) }}
+                  {% if level == 1 %}</ul>{% endif %}
+              {% endif %}
+          </li>
+          {% set counter = counter + 1 %}
+      {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+{% macro get_nav_bar(categories, currentScopeUrl) %}
+    {% import _self as navbar %}
+    {% set counter = 1 %}
+
+    {% for category in categories %}
+        {% if category.details | length > 0 %}
+
+            {% set currentScopeUrl = "/" ~ category.details[0].nameUrl %}
+
+            {% set translatedChildren = 0 %}
+            {% for children in category.children if children.details[0] %}
+                {% set translatedChildren = translatedChildren + 1 %}
+            {% endfor %}
+
+            {% if category.children and translatedChildren > 0 %}
+                <li class="ddown" v-hover-mega-menu>
+                    <a href="{{ currentScopeUrl }}" v-render-category="{ id: {{ category.id }}, type: '{{ category.type }}' }">{{ category.details[0].name }}</a>
+
+                    <ul data-level="1">
+                        {% set counter = counter + 1 %}
+                        {{ navbar.get_children(category, currentScopeUrl, 1) }}
+                    </ul>
+                </li>
+
+            {% else %}
+
+                <li>
+                    <a href="{{ currentScopeUrl }}" v-render-category="{ id: {{ category.id }}, type: '{{ category.type }}' }">{{ category.details[0].name }}</a>
+                </li>
+
+            {% endif %}
+
+
+        {% endif %}
+    {% endfor %}
+{% endmacro %}

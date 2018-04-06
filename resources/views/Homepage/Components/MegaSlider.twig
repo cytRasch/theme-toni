@@ -1,0 +1,21 @@
+<script type="x/template" id="vue-mega-slider">
+    <div>
+        <div id="mega-slider" ref="slider">
+
+            <div v-for="slide in sliderData">
+                <p>{{ slider.title }}</p>
+                <span>{{ slider.subtitle }}</span>
+
+                <a :href="slide.mobile">
+                    <img :src="slide.images[0].split(' ')[0]" :srcset="slide.images.join(', ')" :alt="slide.title"/>
+                </a>
+
+                <a :href="'/a-' + item.item.documents[0].data.ids.itemId" v-for="item in slide.items"
+                   :style="{ position: [ 'absolute' ], top: [ item.coordinates.x + 'px' ], left: [ item.coordinates.y + 'px']}">
+                    {{  }}
+                </a>
+            </div>
+
+        </div>
+    </div>
+</script>

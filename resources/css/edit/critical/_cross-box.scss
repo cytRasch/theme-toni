@@ -1,0 +1,175 @@
+/*
+ ██████ ██████  ██ ████████ ██  ██████  █████  ██
+██      ██   ██ ██    ██    ██ ██      ██   ██ ██
+██      ██████  ██    ██    ██ ██      ███████ ██
+██      ██   ██ ██    ██    ██ ██      ██   ██ ██
+ ██████ ██   ██ ██    ██    ██  ██████ ██   ██ ███████
+*/
+
+.module-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+
+  margin-bottom: 10px;
+
+  text-align: center;
+
+  @media ($large) {
+    margin-bottom: 20px;
+  }
+}
+
+.cross-box {
+  .inner {
+    display: block;
+
+    padding-right: $grid-gutter-xs;
+    padding-left: $grid-gutter-xs;
+
+    position: relative;
+
+    text-align: center;
+
+    @media ($small) {
+      padding-right: $grid-gutter-sm;
+      padding-left: $grid-gutter-sm;
+    }
+
+    @media ($medium) {
+      padding-right: $grid-gutter-md;
+      padding-left: $grid-gutter-md;
+    }
+
+    @media ($large) {
+      padding-right: $grid-gutter-lg;
+      padding-left: $grid-gutter-lg;
+    }
+
+    span {
+      display: block;
+    }
+
+    .img {
+      position: relative;
+
+      background-color: $white;
+    }
+
+    .title {
+      display: block;
+      display: -webkit-box;
+    }
+  }
+
+  .border {
+    padding: 5px 5px 20px;
+
+    border: 1px solid $palegrey;
+
+    @media ($xlarge) {
+      padding: 15px 15px 40px;
+    }
+  }
+
+  .title {
+    overflow: hidden;
+
+    font-size: 1.1rem;
+    font-weight: bold;
+    line-height: 1.4rem;
+
+    height: calc(1.4rem * 3);
+    margin: 10px 0;
+    padding: 0 10px;
+
+    text-overflow: ellipsis;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+
+    @media ($small) {
+      height: calc(1.4rem * 2);
+
+      -webkit-line-clamp: 2;
+    }
+  }
+
+  .prices {
+    font-size: 1.2rem;
+
+    span {
+      display: inline-block;
+
+      @media ($small) {
+        display: block;
+      }
+
+      @media ($xlarge) {
+        display: inline-block;
+      }
+    }
+  }
+
+  .price {
+    font-weight: bold;
+  }
+
+  .bubble {
+    font-size: 12px;
+
+    padding: 2px 10px;
+
+    position: absolute;
+    top: 0;
+    right: $grid-gutter-xs;
+
+    text-transform: uppercase;
+
+    color: $white;
+    background-color: $brand-color;
+
+    @media ($small) {
+      right: $grid-gutter-sm;
+    }
+
+    @media ($medium) {
+      right: $grid-gutter-md;
+    }
+
+    @media ($large) {
+      right: $grid-gutter-lg;
+    }
+  }
+
+  &.product-list {
+    a {
+      display: flex;
+
+      margin-bottom: calc(2 * #{$grid-gutter-xs});
+    }
+
+    .inner {
+      display: flex;
+
+      padding: 0;
+    }
+
+    .border {
+      display: flex;
+
+      flex-flow: column wrap;
+    }
+
+    .img {
+      display: flex;
+
+      align-items: center;
+      flex-grow: 2;
+      justify-content: center;
+    }
+
+    .content {
+      margin-top: auto;
+    }
+  }
+}

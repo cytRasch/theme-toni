@@ -1,0 +1,24 @@
+<!-- Insert markup for footer here -->
+<footer>
+  <div class="fx-container">
+    <div class="fx-row">
+      <div class="fx-col-xs-12">
+        <footer>footer</footer>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+{% if config('CeresVanilla.devEnvironmentBadges') == "true" %}
+<div class="dev-info" style="pointer-events:none;position:fixed;bottom:0;left:0;width:100%;z-index:1;text-shadow: 1px 1px 1px #ffffff">
+  <div style="font-size:12px; text-align: center; color: #999; padding-top:10px; padding-bottom:10px">
+    <span style="background-color:white;padding:2px;margin-bottom:5px;margin-right:5px;border-radius:60px;min-width:25px;text-align:center;float:right" class="hidden-sm-up">XS</span>
+    <span style="background-color:white;padding:2px;margin-bottom:5px;margin-right:5px;border-radius:60px;min-width:25px;text-align:center;float:right" class="hidden-xs-down hidden-md-up">SM</span>
+    <span style="background-color:white;padding:2px;margin-bottom:5px;margin-right:5px;border-radius:60px;min-width:25px;text-align:center;float:right" class="hidden-sm-down hidden-lg-up">MD</span>
+    <span style="background-color:white;padding:2px;margin-bottom:5px;margin-right:5px;border-radius:60px;min-width:25px;text-align:center;float:right" class="hidden-md-down hidden-xl-up">LG</span>
+    <span style="background-color:white;padding:2px;margin-bottom:5px;margin-right:5px;border-radius:60px;min-width:25px;text-align:center;float:right" class="hidden-lg-down hidden-xxl-up">XL</span>
+    <span style="background-color:white;padding:2px;margin-bottom:5px;margin-right:5px;border-radius:60px;min-width:25px;text-align:center;float:right" class="hidden-xl-down">XXL</span>
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,106 @@
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+
+{{ component( "CeresVanilla::Customer.Components.UserLoginHandler" ) }}
+{{ component( "Ceres::PageDesign.Components.ShippingCountrySelect" ) }}
+{{ component( "Ceres::PageDesign.Components.MobileNavigation" ) }}
+{{ component( "CeresVanilla::ItemList.Components.ItemSearch" ) }}
+{{ component( "CeresVanilla::WishList.Components.WishListCount" ) }}
+{{ component( "Ceres::Basket.Components.BasketPreviewHover" ) }}
+
+{% set lang = services.sessionStorage.getLang() %}
+{% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
+{% set activeCurrencies = config("Ceres.currency.available_currencies") | split(', ') %}
+{% set enableCurrencySelect = config("Ceres.currency.enable_selection") == "true" and activeCurrencies | length > 0 %}
+{% set currencyFormat = config("Ceres.currency.format") %}
+{% set currencyFormatSelect = config("Ceres.currency.format_selection") %}
+
+{% if category.linklist == "Y" %}
+    {% set initialCategory = { id: category.id } %}
+{% else %}
+    {% set initialCategory = category %}
+{% endif %}
+
+<mobile-navigation :navigation-tree-data="{{ categories | json_encode }}" :initial-category="{{ initialCategory | json_encode }}" template="#vue-mobile-navigation"></mobile-navigation>
+
+<div class="meta-nav">
+  <div class="fx-container">
+    <ul class="usps">
+        <li>Kostenloser Versand innerhalb Deutschlands</li>
+        <li>30 Tage Rückgaberecht</li>
+        <li>Alle Artikel ab Lager lieferbar</li>
+        <li><a href="/contact">Hilfe &amp; Kontakt</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="main-header">
+  <div class="fx-container">
+    <div class="elements">
+
+      <div class="hamburger">
+        <a href="#mmenu" class="c-hamburger c-hamburger--htx">
+          <span>menu</span>
+        </a>
+      </div>
+
+      <div class="logo">
+          <a href="/">
+              <svg viewBox="0 0 294.737 70" width="294.737" height="70"><path fill="#aaa" d="M109.38 56.306a21.137 21.137 0 0 1-7.334-4.171 18.722 18.722 0 0 1-4.831-6.743 23.108 23.108 0 0 1-1.738-9.175 22.544 22.544 0 0 1 1.6-8.447 21.493 21.493 0 0 1 4.449-6.916 20.345 20.345 0 0 1 6.847-4.692 22.252 22.252 0 0 1 8.862-1.7 29.957 29.957 0 0 1 10.565 1.665 17.994 17.994 0 0 1 7.3 4.866 19.777 19.777 0 0 1 4.206 7.889 38.509 38.509 0 0 1 1.355 10.705h-30.169a9.74 9.74 0 0 0 2.294 5.8 7.163 7.163 0 0 0 5.7 2.225 10.308 10.308 0 0 0 3.754-.73 5.847 5.847 0 0 0 2.849-2.156h14.667a18 18 0 0 1-3.336 5.805 19.47 19.47 0 0 1-4.936 4.031 23.054 23.054 0 0 1-6.117 2.363 29.652 29.652 0 0 1-6.812.8 28.841 28.841 0 0 1-9.175-1.419zm3.684-30a8.533 8.533 0 0 0-2.537 5.109h15.015a6.86 6.86 0 0 0-1.946-4.865 6.6 6.6 0 0 0-4.971-2.016 8.035 8.035 0 0 0-5.562 1.776zM78.9 56.653V35.069a31.059 31.059 0 0 0-.174-3.3 7.766 7.766 0 0 0-.661-2.538 3.636 3.636 0 0 0-1.564-1.668 5.789 5.789 0 0 0-2.78-.591 7.873 7.873 0 0 0-2.155.313 4.617 4.617 0 0 0-2.016 1.182 6.6 6.6 0 0 0-1.495 2.433 11.546 11.546 0 0 0-.59 4v21.757h-15.71V15.466h15.154v5.284h.174a14.013 14.013 0 0 1 5.422-4.693 17.559 17.559 0 0 1 7.96-1.6 16.087 16.087 0 0 1 5.318.868A13.529 13.529 0 0 1 90.3 17.9a12.5 12.5 0 0 1 3.163 4.309 15.354 15.354 0 0 1 1.148 6.188v28.256zm-45.878 0V15.466h15.71v41.187zm-26.59 0V25.129H0v-9.7h6.465a26.383 26.383 0 0 1 .383-6.152 9.823 9.823 0 0 1 2.85-5.422 11.536 11.536 0 0 1 5.769-3.2 39.39 39.39 0 0 1 7.96-.661c1.182 0 2.363.035 3.51.1q1.721.157 3.545.209v10.775c-.626-.1-1.285-.209-1.912-.348a8.964 8.964 0 0 0-1.912-.208c-1.912 0-3.2.347-3.927 1.042-.7.7-1.008 1.981-.9 3.893h8.238v9.7h-7.924v31.489zm26.59-45.635V0h15.71v11.018z"/><path fill="#369" d="M233.495 70V57.453h6.187a5.213 5.213 0 0 0 2.225-.382 3.01 3.01 0 0 0 1.112-1.077 4.317 4.317 0 0 0 .382-2.016 10.208 10.208 0 0 0-.452-1.947q-.417-1.459-1.147-3.441c-.486-1.321-1.008-2.711-1.564-4.206-.556-1.46-1.111-2.885-1.6-4.24-.521-1.355-.973-2.537-1.355-3.58s-.661-1.738-.834-2.12l-6.952-18.885v41.094h-15.154V51.37h-.174a14.013 14.013 0 0 1-5.422 4.693 17.559 17.559 0 0 1-7.96 1.6 16.1 16.1 0 0 1-5.317-.868 13.524 13.524 0 0 1-4.519-2.572 11.721 11.721 0 0 1-3.128-4.31 15.362 15.362 0 0 1-1.147-6.187v-28.26h15.71v21.585a31.416 31.416 0 0 0 .174 3.267 6.983 6.983 0 0 0 .73 2.572 4.037 4.037 0 0 0 1.564 1.668 5.546 5.546 0 0 0 2.745.591 7.874 7.874 0 0 0 2.156-.313 4.822 4.822 0 0 0 2.016-1.182 6.612 6.612 0 0 0 1.494-2.433 11.544 11.544 0 0 0 .591-4V15.466h32.428l6.6 23.635h.174l6.673-23.635h16.267l-13.625 38.059c-.66 1.842-1.355 3.823-2.155 5.944a20.226 20.226 0 0 1-3.024 5.491 11.331 11.331 0 0 1-3.441 2.92 17.607 17.607 0 0 1-4.1 1.495 26.414 26.414 0 0 1-4.449.556c-1.529.034-3.059.069-4.588.069zm-69.687-12.825a13.591 13.591 0 0 1-3.336-1.321 9.129 9.129 0 0 1-2.256-1.772c-.626-.661-1.147-1.321-1.634-1.947h-.174v4.518h-15.192V0h15.71v19.985h.174a12.361 12.361 0 0 1 4.761-4.1 14.3 14.3 0 0 1 6.5-1.46 16.877 16.877 0 0 1 8.585 1.975 15.771 15.771 0 0 1 5.387 5.074 20.526 20.526 0 0 1 2.783 6.926 37.144 37.144 0 0 1 .8 7.473 28.61 28.61 0 0 1-1.077 7.785 22.668 22.668 0 0 1-3.2 7.021 17.06 17.06 0 0 1-5.386 5.074 14.584 14.584 0 0 1-7.612 1.947 19.2 19.2 0 0 1-4.833-.525zM159.846 26.8a6.5 6.5 0 0 0-2.12 2.329 9.778 9.778 0 0 0-1.077 3.267 25.8 25.8 0 0 0-.278 3.649 25.824 25.824 0 0 0 .278 3.649 10.833 10.833 0 0 0 1.077 3.3 6.96 6.96 0 0 0 2.12 2.363 6.009 6.009 0 0 0 3.441.9 5.752 5.752 0 0 0 3.441-.9 6.316 6.316 0 0 0 2.12-2.363 9.978 9.978 0 0 0 1.077-3.3 21.494 21.494 0 0 0 .278-3.649 25.8 25.8 0 0 0-.278-3.649 10.332 10.332 0 0 0-1.077-3.267 7.557 7.557 0 0 0-2.12-2.329 6.018 6.018 0 0 0-3.441-.9 6.016 6.016 0 0 0-3.441.9zm122.97 3.3a6.913 6.913 0 0 1-2.815-2.746 7.813 7.813 0 0 1-1.008-4.032 8.3 8.3 0 0 1 1.008-4.066 7.3 7.3 0 0 1 2.815-2.816 8.432 8.432 0 0 1 4.1-1.008 7.511 7.511 0 0 1 4.066.973 7.129 7.129 0 0 1 2.781 2.781 8.319 8.319 0 0 1 .973 4.1 8.183 8.183 0 0 1-.973 4.066 7.041 7.041 0 0 1-2.781 2.746 8.183 8.183 0 0 1-4.066.973 8.413 8.413 0 0 1-4.1-.971zm1.043-12.1a5.11 5.11 0 0 0-2.086 2.12 6.5 6.5 0 0 0-.73 3.128 6.364 6.364 0 0 0 .73 3.093 4.947 4.947 0 0 0 2.086 2.051 6.321 6.321 0 0 0 3.058.73 5.656 5.656 0 0 0 4.206-1.6 5.715 5.715 0 0 0 1.6-4.275 6.49 6.49 0 0 0-.73-3.128 5.463 5.463 0 0 0-2.05-2.12 6.085 6.085 0 0 0-3.024-.73 6.311 6.311 0 0 0-3.061.731zm4.24 9.454l-1.46-2.746h-.73v2.746h-2.016v-8.585h3.024c2.294 0 3.441.939 3.441 2.781a2.923 2.923 0 0 1-.452 1.668 2.63 2.63 0 0 1-1.216 1.078l1.633 3.058zm-2.537-4.658h1.32a1.649 1.649 0 0 0 1.043-.243.951.951 0 0 0 .312-.8.772.772 0 0 0-.312-.73 2.009 2.009 0 0 0-1.077-.209h-1.286z"/></svg>
+          </a>
+      </div>
+
+      <div class="trusted">
+          <i class="icon-trusted"></i>
+      </div>
+
+      <div class="svg-container">
+        <div class="my-account">
+            <user-login-handler template="#vue-user-login-handler":user-data="{{ services.customer.getContact() | json_encode() }}"></user-login-handler>
+        </div>
+
+        <div class="wishlist">
+            {% if "wish-list" in enabledRoutes or "all" in enabledRoutes %}
+                <li class="list-inline-item control-wish-list">
+                    <wish-list-count :init-ids="{{ services.wishList.getItemWishList() | json_encode }}"></wish-list-count>
+                </li>
+            {% endif %}
+        </div>
+
+        <div class="basket">
+            <a v-toggle-basket-preview href="#" class="toggle-basket-preview">
+                <span class="badge-right" v-basket-item-quantity="this.$store.state.basket.data.itemQuantity">0</span>
+                <span class="el">
+                    <svg viewBox="0 0 48.574 40" width="48.574" height="40"><path d="M18.525 31.819a4.09 4.09 0 1 0 4.09 4.09 4.087 4.087 0 0 0-4.09-4.09zm2.439 4.09a2.439 2.439 0 1 1-2.439-2.439 2.426 2.426 0 0 1 2.439 2.439zm18.524-4.09a4.09 4.09 0 1 0 4.09 4.09 4.087 4.087 0 0 0-4.09-4.09zm2.439 4.09a2.439 2.439 0 1 1-2.439-2.439 2.426 2.426 0 0 1 2.439 2.439zm6.529-26.115a.779.779 0 0 0-.433-.433.869.869 0 0 0-.629 0 .779.779 0 0 0-.433.433L42.2 21.672c-23.638 0-27.139.039-27.689.039L10.462 3.343A4.487 4.487 0 0 0 8.692.629 3.174 3.174 0 0 0 6.8 0H.826A.807.807 0 0 0 0 .826a.807.807 0 0 0 .826.826h6.018a1.827 1.827 0 0 1 .9.275 2.945 2.945 0 0 1 1.18 1.809L14 26.195a7.334 7.334 0 0 0 .787 1.849 3.4 3.4 0 0 0 2.911 1.77h24.387a.826.826 0 1 0 0-1.652H17.7a1.916 1.916 0 0 1-1.613-1.141 4.158 4.158 0 0 1-.472-1.219l-.629-2.517h27.846a.756.756 0 0 0 .472-.157 1.071 1.071 0 0 0 .315-.393l4.956-12.389a4.753 4.753 0 0 0-.119-.552z"/></svg>
+                    <span class="text">Warenkorb <i v-waiting-animation="this.$store.state.basket.isBasketLoading" waiting-class="fa fa-refresh fa-spin" class="" aria-hidden="true"></i></span>
+                </span>
+                {% if config("Ceres.header.basket_values") != "quantity" %}
+                    {% if services.customer.showNetPrices() %}
+                        <span class="badge" v-basket-item-sum="this.$store.state.basket.data.itemSumNet">0,00 {{ services.checkout.getCurrencyData()[currencyFormat] }}</span>
+                    {% else %}
+                        <span class="badge" v-basket-item-sum="this.$store.state.basket.data.itemSum">0,00 {{ services.checkout.getCurrencyData()[currencyFormat] }}</span>
+                    {% endif %}
+                {% endif %}
+            </a>
+        </div>
+      </div>
+
+      <div class="search">
+          <item-search template="#vue-item-search"></item-search>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="main-navigation">
+  <div class="nav-container">
+    <div class="fx-container text-center">
+        {% include "CeresVanilla::PageDesign.Partials.Header.NavigationListDesktop" %}
+    </div>
+  </div>
+</div>
+
+{# mobile nav #}
+<div id="mmenu" class="hide">{% include "CeresVanilla::PageDesign.Partials.Header.MmenuList" %}</div>
+
+<div class="fx-container"><a href="/">Home</a></div>

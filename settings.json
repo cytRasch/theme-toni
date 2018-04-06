@@ -1,0 +1,22 @@
+{
+  "cookie" : {
+    "value" : "stage=eyJpdiI6IllWdWdjaGVuTDdwczlVSW95U3MwY3c9PSIsInZhbHVlIjoiMWN3V3RmcTNKbGFJTnlaUTlJTzM4UT09IiwibWFjIjoiYzE3ZTYzZTgyMWViNTA0OTQwY2MxYWYwN2JjN2U1MGRiMzAyMzNmOTcwYjAyMTI1M2FlNGU4ZmM3ZGI5NGE0YiJ9"
+  },
+  "javascripts": {
+    "app": {
+      "src": [
+        "resources/js/vendor/slick.js",
+        "resources/js/vendor/lazysizes.js",
+        "resources/js/vendor/ls.optimumx.js",
+        "resources/js/vendor/ls.background.js",
+        "resources/js/vendor/mmenu.oncanvas.js",
+        "resources/js/vendor/mmenu.offcanvas.js",
+        "resources/js/vendor/mmenu.scrollbugfix.js",
+        "resources/js/vendor/mmenu.searchfield.js",
+        "resources/js/vendor/mmenu.navbars.min.js",
+        "resources/js/edit/app.js"
+      ],
+      "dest": "resources/js/app.js"
+    }
+  }
+}

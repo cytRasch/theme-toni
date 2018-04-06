@@ -1,0 +1,40 @@
+{
+  "name": "master",
+  "version": "1.0.0",
+  "description": "First steps to project Mars",
+  "author": {
+    "name": "createyourtemplate",
+    "email": "entwicklung@cyt.de"
+  },
+  "contributors": [
+    {
+      "name": "Antonio",
+      "email": "name@cyt.de"
+    }
+  ],
+  "private": true,
+  "engines": {
+    "node": "6.8.1",
+    "npm": "3.10.8"
+  },
+  "scripts": {
+    "build": "grunt build",
+    "start": "grunt"
+  },
+  "devDependencies": {
+    "autoprefixer": "8.0.x",
+    "browser-sync": "2.23.x",
+    "grunt": "1.0.0",
+    "grunt-contrib-clean": "1.1.x",
+    "grunt-contrib-concat": "1.0.x",
+    "grunt-contrib-copy": "1.0.x",
+    "grunt-config-dir": "0.3.x",
+    "grunt-contrib-uglify": "3.3.x",
+    "grunt-contrib-watch": "1.0.x",
+    "grunt-postcss": "0.9.x",
+    "grunt-sass": "2.1.0",
+    "bs-rewrite-rules": "2.1.x",
+    "grunt-spritesmith": "6.6.x",
+    "jit-grunt": "0.10.x"
+  }
+}

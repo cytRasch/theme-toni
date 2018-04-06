@@ -1,0 +1,87 @@
+// client specific
+$brand-color: #369;
+$shop-background-color: #fff;
+$font-color-basic: #000;
+$link-color-hover: $brand-color;
+$font-basic: 'futura-pt', Arial, sans-serif;
+
+//base
+$white: #fff;
+$black: #000;
+$red: #f00;
+
+$sale: $brand-color;
+$new: $black;
+$top: $black;
+
+$darkgrey: #4a4a4a;
+$mediumgrey: lighten($black, 40);
+$grey: #aaa;
+$lightgrey: #d8d8d8;
+$palegrey: #f5f5f5;
+
+// mmenu
+$border-color-mmenu: rgba($black, .1);
+$background-color-mmenu: $palegrey;
+
+// Query sizes
+$small: 'min-width: 544px';
+$medium: 'min-width: 768px';
+$large: 'min-width: 992px';
+$xlarge: 'min-width: 1200px';
+$xxlarge: 'min-width: 1630px';
+
+// grid settings
+$grid-gutter-xs: .5rem;
+$grid-gutter-sm: .5rem;
+$grid-gutter-md: .5rem;
+$grid-gutter-lg: .5rem;
+$container-max-width: calc(1400px + 1rem);
+
+// arrows
+%arrow {
+  display: inline-block;
+
+  position: relative;
+
+  content: '';
+
+  border-top-style: solid;
+  border-bottom: 0;
+}
+
+%arrowRight {
+  @extend %arrow;
+
+  transform: rotate(45deg);
+
+  border-right-style: solid;
+  border-left: 0;
+}
+
+%arrowLeft {
+  @extend %arrow;
+
+  transform: rotate(-45deg);
+
+  border-right: 0;
+  border-left-style: solid;
+}
+
+%arrowDown {
+  @extend %arrow;
+
+  transform: rotate(-135deg);
+
+  border-right: 0;
+  border-left-style: solid;
+}
+
+%arrowUp {
+  @extend %arrow;
+
+  transform: rotate(-315deg);
+
+  border-right: 0;
+  border-left-style: solid;
+}

@@ -1,0 +1,145 @@
+@import '#config';
+
+.slick-dots {
+  pointer-events: none;
+
+  li {
+    width: 5px;
+    height: 5px;
+
+    pointer-events: all;
+
+    button {
+      width: 5px;
+      height: 5px;
+      padding: 0;
+
+      border-radius: 50px;
+      background-color: $palegrey;
+
+      @media($small) {
+        width: 8px;
+        height: 8px;
+      }
+
+      @media($medium) {
+        width: 10px;
+        height: 10px;
+      }
+
+      &:hover {
+        background-color: $black;
+      }
+    }
+
+    @media($small) {
+      width: 8px;
+      height: 8px;
+    }
+
+    @media($medium) {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  .slick-active {
+    button {
+      background-color: $black;
+    }
+  }
+}
+
+.slick-nav,
+.nav-cross-ItemsListByDate,
+.nav-cross-RandomList {
+  .prev,
+  .next {
+    display: flex;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+
+
+    &::after {
+      display: flex;
+
+      font-family: Arial;
+      font-size: 1.2rem;
+      font-size-adjust: .85;
+
+      width: 45px;
+      height: 45px;
+
+      content: '\00279c';
+
+      border: 1px solid $palegrey;
+      border-radius: 4px;
+      background-color: $white;
+
+      align-items: center;
+      justify-content: center;
+    }
+
+    &:hover {
+      &::after {
+        color: $white;
+        border-color: $brand-color;
+        background-color: $brand-color;
+      }
+    }
+  }
+
+  .prev {
+    left: -.5rem;
+
+    @media ($xxlarge) {
+      left: -22.5px;
+    }
+
+    &::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  .next {
+    right: -.5rem;
+
+    @media ($xxlarge) {
+      right: -22.5px;
+    }
+  }
+}
+
+.nav-cross-ItemsListByDate {
+  .next,
+  .prev {
+    bottom: 30%;
+  }
+
+  .next {
+    right: 0;
+
+    @media ($xxlarge) {
+      right: .5rem;
+    }
+  }
+
+  .prev {
+    left: 0;
+
+    @media ($xxlarge) {
+      left: .5rem;
+    }
+  }
+}
+
+.touch .slick-nav {
+  display: none;
+}

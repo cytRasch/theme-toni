@@ -1,0 +1,13 @@
+.form-check-label {
+  &::before {
+    font-family: 'FontAwesome';
+
+    content: '\f096';
+  }
+}
+
+.form-check-input:checked + label::before {
+  content: '\f046';
+
+  opacity: 1;
+}

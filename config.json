@@ -1,0 +1,445 @@
+[
+    {
+        "tab"                           : "Templates überschreiben",
+        "key"                           : "templates.override",
+        "label"                         : "Welches Templates sollen überschrieben werden?",
+        "type"                          : "multi_select",
+        "possibleValues"                :
+        {
+            "page_design"               : "Page design",
+            "head"                      : "Head",
+            "header"                    : "Header",
+            "footer"                    : "Footer",
+            "homepage"                  : "Homepage",
+            "basket"                    : "Shopping cart",
+            "checkout"                  : "Checkout",
+            "order_confirmation"        : "Order confirmation",
+            "login"                     : "Login",
+            "register"                  : "Register",
+            "item"                      : "Single item view",
+            "category_view"             : "Category item view",
+            "my_account"                : "My account",
+            "cancellation_rights"       : "Cancellation rights",
+            "legal_disclosure"          : "Legal disclosure",
+            "privacy_policy"            : "Privacy policy",
+            "terms_conditions"          : "Terms and conditions",
+            "item_not_found"            : "Item not found",
+            "page_not_found"            : "Page not found",
+            "category_content"          : "Content category template",
+            "category_item"             : "Item category template"
+        },
+        "default"                       : ""
+    },
+    {
+        "tab": "Fonts Einstellungen",
+        "key": "WebFontsActive",
+        "label": "Webfont Loader aktivieren",
+        "type": "checkbox",
+        "default": "false"
+    },
+    {
+        "tab": "Fonts Einstellungen",
+        "key": "WebFontsFamilies",
+        "label": "Google Webfonts installieren",
+        "type": "text",
+        "default": ""
+    },
+    {
+        "tab": "Fonts Einstellungen",
+        "key": "WebFont1",
+        "label": "Google Font 1 schreibweise (.font-1)",
+        "type": "text",
+        "default": ""
+    },
+    {
+        "tab": "Fonts Einstellungen",
+        "key": "WebFont2",
+        "label": "Google Font 2 schreibweise (.font-2)",
+        "type": "text",
+        "default": ""
+    },
+    {
+        "tab": "Fonts Einstellungen",
+        "key": "WebFont3",
+        "label": "Google Font 3 schreibweise (.font-3)",
+        "type": "text",
+        "default": ""
+    },
+    {
+      "tab": "Fonts Einstellungen",
+      "key": "External_Font_URL",
+      "label": "Externe Font einbinden (URL)",
+      "type": "text",
+      "default": ""
+    },
+    {
+        "tab": "Fonts Einstellungen",
+        "key": "External_Font",
+        "label": "Externe Font Name/n CSS",
+        "type": "text",
+        "default": ""
+    },
+    {
+        "tab": "Fonts Einstellungen",
+        "key": "WebFontDefault",
+        "label": "Standard Font",
+        "type": "text",
+        "default": ""
+    },
+    {
+        "tab": "Fonts Einstellungen",
+        "key": "TypekitActive",
+        "label": "Adobe Typekit aktivieren",
+        "type": "checkbox",
+        "default": "false"
+    },
+    {
+        "tab": "Fonts Einstellungen",
+        "key": "TypekitID",
+        "label": "Adobe Typekit ID",
+        "type": "text",
+        "default": ""
+    },
+    {
+      "tab": "Mega-Menu",
+      "key": "navigationDesktopLevels",
+      "label": "Level Anzahl Desktop",
+      "type": "dropdown",
+      "possibleValues":
+      {
+        "1": "1",
+        "2": "2",
+        "3": "3"
+      },
+      "default": "2"
+    },
+    {
+        "tab": "Home Module aktivieren",
+        "key": "activateModules",
+        "label": "Module aktivieren",
+        "type": "multi_select",
+        "possibleValues":
+        {
+            "homeSlider": "Banner-Slider",
+            "shortCuts": "Shortcuts",
+            "productGroups": "Produkt-Kacheln",
+            "logoSlider": "Logo-Slider",
+            "crossSeller": "Cross-Seller",
+            "seoText": "SEO Text"
+        },
+        "default": ""
+    },
+    {
+        "tab": "Home Module Position",
+        "key": "position_bannerslider",
+        "label": "Banner Slider",
+        "type": "text",
+        "default": "1"
+    },
+    {
+        "tab": "Home Module Position",
+        "key": "position_shortcuts",
+        "label": "Shortcuts",
+        "type": "text",
+        "default": "2"
+    },
+    {
+        "tab": "Home Module Position",
+        "key": "position_productgroups",
+        "label": "Produkt-Kacheln",
+        "type": "text",
+        "default": "3"
+    },
+    {
+        "tab": "Home Module Position",
+        "key": "position_logoslider",
+        "label": "Logo-Slider",
+        "type": "text",
+        "default": "4"
+    },
+    {
+        "tab": "Home Module Position",
+        "key": "position_crossseller",
+        "label": "Cross-Seller",
+        "type": "text",
+        "default": "5"
+    },
+    {
+        "tab": "Home Module Position",
+        "key": "position_seotext",
+        "label": "SEO-Text",
+        "type": "text",
+        "default": "6"
+    },
+    {
+        "tab": "Home Banner-Slider",
+        "key": "homeSliderFullscreen",
+        "label": "Vollbild?",
+        "type": "checkbox",
+        "default": "false"
+    },
+    {
+        "tab": "Home Banner-Slider",
+        "key": "homeSliderCount",
+        "label": "Anzahl sichtbare Slider",
+        "type": "text",
+        "default": "3"
+    },
+    {
+        "tab": "Home Banner-Slider",
+        "key": "homeSliderImageURLs",
+        "label": "Bild URLs (Semikolon getrennt) -> Bilder in der CMS Galerie hochladen!",
+        "type": "textarea",
+        "default": "https://placehold.it/640x640 640w, https://placehold.it/1000x1000 1000w, https://placehold.it/1400x550 1400w"
+    },
+    {
+        "tab": "Home Banner-Slider",
+        "key": "homeSliderLinks",
+        "label": "Links (Semikolon getrennt)",
+        "type": "textarea",
+        "default": ""
+    },
+    {
+        "tab": "Home Banner-Slider",
+        "key": "homeSliderTitles",
+        "label": "Bannertexte (Semikolon getrennt)",
+        "type": "textarea",
+        "default": ""
+    },
+    {
+        "tab": "Home Banner-Slider",
+        "key": "homeSliderButtons",
+        "label": "Buttontexte (Semikolon getrennt)",
+        "type": "textarea",
+        "default": ""
+    },
+    {
+      "tab": "Home Shortcuts",
+      "key": "homeShortcutsFullscreen",
+      "label": "Vollbild?",
+      "type": "checkbox",
+      "default": "false"
+    },
+    {
+        "tab": "Home Shortcuts",
+        "key": "homeShortcutsCount",
+        "label": "Anzahl sichtbarer Elemente",
+        "type": "text",
+        "default": 4
+    },
+    {
+        "tab": "Home Shortcuts",
+        "key": "homeShortcutsGrid",
+        "label": "Bootstrap Grid (xs, sm, md, lg)",
+        "type": "text",
+        "default": "12, 6, 3, 3"
+    },
+    {
+        "tab": "Home Shortcuts",
+        "key": "homeShortcutsImageURL",
+        "label": "Bild URLs (Semikolon getrennt) -> Bilder in der CMS Galerie hochladen!",
+        "type": "textarea",
+        "default": "https://placehold.it/640x640 640w, https://placehold.it/1000x1000 1000w"
+    },
+    {
+        "tab": "Home Shortcuts",
+        "key": "homeShortcutsLinks",
+        "label": "Links (Semikolon getrennt)",
+        "type": "textarea",
+        "default": "/link1; /link2; /link3"
+    },
+    {
+        "tab": "Home Shortcuts",
+        "key": "homeShortcutsButtonHTML",
+        "label": "Buttons (Semikolon getrennt)",
+        "type": "textarea",
+        "default": "Hier Button HTML eintragen"
+    },
+    {
+        "tab": "Home Shortcuts",
+        "key": "homeShortcutsTitle",
+        "label": "Überschrift",
+        "type": "text",
+        "default": ""
+    },
+    {
+      "tab": "Home Produkt-Kacheln",
+      "key": "homeProductGroupFullscreen",
+      "label": "Vollbild?",
+      "type": "checkbox",
+      "default": "false"
+    },
+    {
+        "tab": "Home Produkt-Kacheln",
+        "key": "homeProductGroupCount",
+        "label": "Anzahl sichtbarer Elemente",
+        "type": "dropdown",
+        "possibleValues":
+        {
+            "5": 5,
+            "8": 8
+        },
+        "default": 8
+    },
+    {
+        "tab": "Home Produkt-Kacheln",
+        "key": "homeProductGroupImageURL",
+        "label": "Bild URLs (Semikolon getrennt) -> Bilder in der CMS Galerie hochladen!",
+        "type": "textarea",
+        "default": "https://placehold.it/640x640 640w, https://placehold.it/1000x1000 1000w"
+    },
+    {
+        "tab": "Home Produkt-Kacheln",
+        "key": "homeProductGroupLinks",
+        "label": "Links (Semikolon getrennt)",
+        "type": "textarea",
+        "default": "/link1; /link2; /link3"
+    },
+    {
+        "tab": "Home Produkt-Kacheln",
+        "key": "homeProductGroupButtonHTML",
+        "label": "Buttons (Semikolon getrennt)",
+        "type": "textarea",
+        "default": "Hier Button HTML eintragen"
+    },
+    {
+        "tab": "Home Produkt-Kacheln",
+        "key": "homeProductGroupTitle",
+        "label": "Überschrift",
+        "type": "text",
+        "default": ""
+    },
+    {
+        "tab": "Home Logo-Slider",
+        "key": "homeLogoSliderCount",
+        "label": "Anzahl sichtbare Logos",
+        "type": "text",
+        "default": "10"
+    },
+    {
+        "tab": "Home Logo-Slider",
+        "key": "homeLogoSliderImageURLs",
+        "label": "Bild URLs (Semikolon getrennt) -> Bilder in der CMS Galerie hochladen!",
+        "type": "textarea",
+        "default": "https://placehold.it/80x150 80w, https://placehold.it/160x300 160w"
+    },
+    {
+        "tab": "Home Logo-Slider",
+        "key": "homeLogoSliderLinks",
+        "label": "Links (Semikolon getrennt)",
+        "type": "textarea",
+        "default": "/link1;/link2"
+    },
+    {
+        "tab": "Home Logo-Slider",
+        "key": "homeLogoSliderTitel",
+        "label": "Überschrift",
+        "type": "text",
+        "default": ""
+    },
+    {
+        "tab": "Home Logo-Slider",
+        "key": "homeLogoSliderImageMaxHeight",
+        "label": "Maximale Höhe der Logos",
+        "type": "text",
+        "default": "100"
+    },
+    {
+        "tab": "Home Logo-Slider",
+        "key": "homeLogoSliderCountSM",
+        "label": "Anzahl Logos pro Slider: kleines Smartphone",
+        "type": "text",
+        "default": "3"
+    },
+    {
+        "tab": "Home Logo-Slider",
+        "key": "homeLogoSliderCountMD",
+        "label": "Anzahl Logos pro Slider: großes Smartphone",
+        "type": "text",
+        "default": "4"
+    },
+    {
+        "tab": "Home Logo-Slider",
+        "key": "homeLogoSliderCountLG",
+        "label": "Anzahl Logos pro Slider: Tablet",
+        "type": "text",
+        "default": "5"
+    },
+    {
+        "tab": "Home Logo-Slider",
+        "key": "homeLogoSliderCountXL",
+        "label": "Anzahl Logos pro Slider: Desktop",
+        "type": "text",
+        "default": "9"
+    },
+    {
+        "tab": "Home SEO-Text",
+        "key": "homeSeoTextContent",
+        "label": "Inhalt (HTML) -> Warnung: falsches Markup kann Webshop zerschiessen!!!",
+        "type": "textarea",
+        "default": "<h1>Willkommen</h1><p>Text Text Text...</p>"
+    },
+    {
+        "tab": "Quick CSS",
+        "key": "quickCSSGlobal",
+        "label": "CSS Global",
+        "type": "textarea",
+        "default": ""
+    },
+    {
+        "tab": "Quick CSS",
+        "key": "quickCSSHome",
+        "label": "CSS Startseite",
+        "type": "textarea",
+        "default": ""
+    },
+    {
+        "tab": "Entwickler-Einstellungen",
+        "key": "devEnvironmentBadges",
+        "label": "Media-Query-Badge unten rechts anzeigen",
+        "type": "checkbox",
+        "default": false
+    },
+    {
+        "tab": "Entwickler-Einstellungen",
+        "key": "devEnvironmentSetStageCookieContent",
+        "label": "Stage Cookie String",
+        "type": "text",
+        "default": "eyJpdiI6IllWdWdjaGVuTDdwczlVSW95U3MwY3c9PSIsInZhbHVlIjoiMWN3V3RmcTNKbGFJTnlaUTlJTzM4UT09IiwibWFjIjoiYzE3ZTYzZTgyMWViNTA0OTQwY2MxYWYwN2JjN2U1MGRiMzAyMzNmOTcwYjAyMTI1M2FlNGU4ZmM3ZGI5NGE0YiJ9"
+    },
+    {
+        "tab": "Mega Slider",
+        "key": "megaSliderMobileURLs",
+        "label": "Links für Smartphone-Geräte (Semikolon getrennt)",
+        "type": "textarea",
+        "default": "/link1;"
+    },
+    {
+        "tab": "Mega Slider",
+        "key": "megaSliderImages",
+        "label": "Bilder (Semikolon getrennt)",
+        "type": "textarea",
+        "default": "/bild1-mobile.jpg 600w, /bild1-desktop 1024w"
+    },
+    {
+        "tab": "Mega Slider",
+        "key": "megaSliderTitles",
+        "label": "Slider Titel (Semikolon getrennt)",
+        "type": "textarea",
+        "default": ""
+    },
+    {
+        "tab": "Mega Slider",
+        "key": "megaSliderSubTitles",
+        "label": "Slider Untertitel (Semikolon getrennt)",
+        "type": "textarea",
+        "default": ""
+    },
+    {
+        "tab": "Mega Slider",
+        "key": "megaSliderItemIDs",
+        "label": "Arikel IDs inkl. Koordinaten (Komma und Semikolon getrennt)",
+        "type": "textarea",
+        "default": "10[50 50], 20[10 23], 22[80 50];"
+    }
+]

@@ -1,0 +1,34 @@
+{% extends getPartial('page-design') %}
+
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+
+{% block PartialHead %}
+    <meta name="description" content="{{ config("Ceres.meta."~metaLang~".description_cancel_rights") }}">
+    <meta name="robots" content="{{ config("Ceres.meta.robots_cancel_rights") }}">
+    <title>{{ trans("Ceres::Template.generalCancellationRightNoShy") }} | {{ config("Ceres.header.company_name") }}</title>
+{% endblock %}
+
+{% block PageBody %}
+
+    {% set cancellationRights = services.legalInformation.getCancellationRights() %}
+
+    <div class="fx-container">
+        <div class="fx-row">
+            <div class="fx-col-xs-12">
+                {% autoescape false %}
+                    {# <p>{{ trans("Ceres::Template.generalCancellationRight") }}</p> #}
+                {% endautoescape %}
+
+                {% if cancellationRights.htmlText %}
+                    {{ cancellationRights.htmlText | raw }}
+                {% else %}
+                    <p class="static-page-plain-text">{{ cancellationRights.plainText }}</p>
+                {% endif %}
+
+                {{ LayoutContainer.show("Ceres::StaticPages.CancellationRights") }}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

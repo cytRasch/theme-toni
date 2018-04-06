@@ -1,0 +1,96 @@
+/*
+██       █████  ███████ ██    ██ ██       ██████   █████  ██████  ███████ ██████
+██      ██   ██    ███   ██  ██  ██      ██    ██ ██   ██ ██   ██ ██      ██   ██
+██      ███████   ███     ████   ██      ██    ██ ███████ ██   ██ █████   ██   ██
+██      ██   ██  ███       ██    ██      ██    ██ ██   ██ ██   ██ ██      ██   ██
+███████ ██   ██ ███████    ██    ███████  ██████  ██   ██ ██████  ███████ ██████
+*/
+
+//scss-lint:disable ImportantRule
+
+.cross-box {
+  .slick-arrow {
+    display: none !important;
+
+    @media ($xlarge) {
+      display: flex !important;
+
+      padding: 0;
+
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      bottom: 21px; //minus slick-dots
+
+      border: 0;
+      background-color: transparent;
+
+      align-items: center;
+      appearance: none;
+      justify-content: center;
+    }
+
+    &:active,
+    &:hover {
+      span {
+        &::before {
+          border-color: $brand-color;
+        }
+      }
+    }
+
+    span {
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      &::before {
+        @extend %arrow;
+
+        width: 40px;
+        height: 40px;
+
+        border-width: 1px;
+        border-color: $black;
+      }
+    }
+  }
+
+  .next {
+    right: 10px;
+
+    @media ($xxlarge) {
+      right: -20px;
+    }
+
+    span {
+      &::before {
+        @extend %arrowRight;
+      }
+    }
+  }
+
+  .prev {
+    left: 10px;
+
+    @media ($xxlarge) {
+      left: -20px;
+    }
+
+    span {
+      &::before {
+        @extend %arrowLeft;
+      }
+    }
+  }
+
+  .slick-dots {
+    margin-bottom: 0;
+
+    position: absolute;
+    right: 0;
+    bottom: calc(-21 - 15)px; // 21px = slick-dots height
+    left: 0;
+  }
+}

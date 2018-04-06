@@ -1,0 +1,13 @@
+<script type="x/template" id="vue-item-filter-list">
+    <div class="filter-wrapper cyt" v-show="facets && facets.length > 0">
+        {{ component( "CeresVanilla::ItemList.Components.Filter.ItemFilter") }}
+
+        <div class="collapsex" :class="{in: isActive}" id="filterCollapse">
+            <div class="filter-container">
+                <div class="card-columnsx">
+                    <item-filter v-for="facet in facets" :facet="facet" :key="facet.id"></item-filter>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

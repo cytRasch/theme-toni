@@ -1,0 +1,128 @@
+/*
+███    ███ ███████  ██████   █████      ███    ███ ███████ ███    ██ ██    ██
+████  ████ ██      ██       ██   ██     ████  ████ ██      ████   ██ ██    ██
+██ ████ ██ █████   ██   ███ ███████     ██ ████ ██ █████   ██ ██  ██ ██    ██
+██  ██  ██ ██      ██    ██ ██   ██     ██  ██  ██ ██      ██  ██ ██ ██    ██
+██      ██ ███████  ██████  ██   ██     ██      ██ ███████ ██   ████  ██████
+*/
+
+/* @group mega menu */
+
+.dropdown-container {
+  visibility: hidden;
+
+  padding: 20px;
+
+  position: absolute;
+  z-index: -10;
+  right: 0;
+  left: 0;
+
+  list-style: none;
+
+  transition: all 250ms 250ms ease-in-out;
+
+  opacity: 0;
+  border-top: 1px solid darken($white, 20);
+  border-bottom: 1px solid darken($white, 20);
+  background-color: $white;
+
+  filter: alpha(opacity = 0);
+
+  ul {
+    display: flex;
+
+    padding: 50px 0;
+
+    list-style: none;
+
+    align-items: flex-start;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    li {
+      flex-basis: 220px;
+    }
+
+    a {
+      display: block;
+
+      font-size: .9rem;
+      // margin: 0 30px;
+      // transition: opacity 100ms;
+
+      text-align: center;
+
+      @media ($xlarge) {
+        font-size: 1rem;
+      }
+
+      &:hover {
+        img {
+          transition: opacity 300ms;
+
+          opacity: .7;
+        }
+      }
+    }
+
+    img {
+      display: block;
+
+      max-width: 175px;
+      margin: 0 auto 30px;
+    }
+  }
+
+  .level2 {
+    ul {
+      padding: 0;
+    }
+  }
+}
+
+/* @end mega menu */
+
+/*
+███    ██  ██████     ████████  ██████  ██    ██  ██████ ██   ██
+████   ██ ██    ██       ██    ██    ██ ██    ██ ██      ██   ██
+██ ██  ██ ██    ██ █████ ██    ██    ██ ██    ██ ██      ███████
+██  ██ ██ ██    ██       ██    ██    ██ ██    ██ ██      ██   ██
+██   ████  ██████        ██     ██████   ██████   ██████ ██   ██
+*/
+
+.no-touch {
+  .svg-container {
+    a:hover {
+      path {
+        fill: $brand-color;
+      }
+    }
+  }
+}
+
+/*
+███    ███ ██    ██       █████   ██████  ██████  ██████  ██    ██ ███    ██ ████████
+████  ████  ██  ██       ██   ██ ██      ██      ██    ██ ██    ██ ████   ██    ██
+██ ████ ██   ████  █████ ███████ ██      ██      ██    ██ ██    ██ ██ ██  ██    ██
+██  ██  ██    ██         ██   ██ ██      ██      ██    ██ ██    ██ ██  ██ ██    ██
+██      ██    ██         ██   ██  ██████  ██████  ██████   ██████  ██   ████    ██
+*/
+
+.login {
+  .dropdown-menu {
+    padding: 0;
+
+    border: 0;
+
+    a {
+      white-space: nowrap;
+    }
+  }
+
+  .dropdown-toggle {
+    &::after {
+      display: none;
+    }
+  }
+}

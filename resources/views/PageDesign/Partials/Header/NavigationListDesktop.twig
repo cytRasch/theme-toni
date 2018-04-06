@@ -1,0 +1,7 @@
+{% import "CeresVanilla::Category.Macros.CategoryTreeDesktop" as Tree %}
+
+{% set lang = services.sessionStorage.getLang() %}
+
+<ul class="nav-top nav-large">
+    {{ Tree.get_nav_bar(categories, "") }}
+</ul>
